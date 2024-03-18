@@ -1,0 +1,40 @@
+<div class="border p-5 bg-dark text-light">
+    <h1 class="text-center">Movie Ticket Booking</h1>
+    <form #loginform="ngForm" id="loginform">
+    <table class="text-center m-auto my-5" >
+        
+            <tr >
+                <td colspan="2" >login</td>
+            </tr>
+            <tr>
+                <td><label for="name">Username:</label></td>
+                <td><input type="text" name="name" id="name" class="form-control" required pattern="[a-zA-Z\s]+" #unameip=ngModel [(ngModel)]="uname"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div *ngIf="unameip.touched">
+                        <div *ngIf="unameip.errors?.['pattern']" class="text-danger text-end">Please enter a
+                            valid name</div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="password">Password:</label></td>
+                <td><input type="password" name="password" id="password" required minlength="8" class="form-control" #passip=ngModel [(ngModel)]="upass"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div *ngIf="passip.touched">
+                        <div *ngIf="passip.errors?.['min']" class="text-danger text-end">Minimum 8 characters</div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><a>Forget Password?</a></td>
+                <td><a routerLink="ticketbooking"><button type="submit" class="btn btn-primary" [disabled]="!loginform.form.valid">Login</button></a></td>
+            </tr>
+        
+        
+    </table>
+</form>
+</div>
